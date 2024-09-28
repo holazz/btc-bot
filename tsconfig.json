@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "scripts", "config.ts", "config.example.ts"]
+}
