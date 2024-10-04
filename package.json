@@ -3,18 +3,28 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "tsx src/index.ts",
+    "dev": "tsx src/commands/text.ts",
+    "text": "tsx src/commands/text.ts",
+    "file": "tsx src/commands/file.ts",
+    "rune": "tsx src/commands/rune.ts",
+    "rpc": "tsx src/commands/rpc.ts",
     "lint": "eslint .",
     "postinstall": "tsx scripts/postinstall.ts"
   },
   "dependencies": {
+    "@unisat/wallet-sdk": "^1.7.3",
     "axios": "^1.5.1",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.5",
+    "mime": "^4.0.4",
     "p-limit": "^4.0.0",
-    "picocolors": "^1.0.0"
+    "picocolors": "^1.0.0",
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@holazz/eslint-config": "^1.4.8",
     "@types/node": "^22.4.2",
+    "@types/prompts": "^2.4.9",
     "eslint": "^8.51.0",
     "prettier": "^3.0.3",
     "tsx": "^3.14.0",
