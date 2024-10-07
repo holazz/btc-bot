@@ -16,9 +16,9 @@ export const mempoolApi = new MempoolApi({
 })
 
 export const rpcApi = new RpcApi({
-  baseURL: config.rpc!.url,
-  username: config.rpc!.username,
-  password: config.rpc!.password,
+  baseURL: (config.rpc && config.rpc.url) || '',
+  username: (config.rpc && config.rpc.username) || '',
+  password: (config.rpc && config.rpc.password) || '',
 })
 
 export async function getFeeRate(initialFeeRate?: number) {
