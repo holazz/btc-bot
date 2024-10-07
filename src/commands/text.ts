@@ -11,7 +11,7 @@ import {
   pushTxs,
 } from '../helpers/inscriber'
 import logger from '../utils/logger'
-import { resolveConfig, retry, writeFile } from '../utils'
+import { calTxFee, resolveConfig, retry, writeFile } from '../utils'
 import { getFeeRate, openApi } from '../api'
 import { TOKEN_SYMBOL } from '../constants'
 
@@ -39,7 +39,7 @@ async function run() {
     scriptTaproot,
     tapLeafScript,
   })
-  const revealTxFee = revealTxSize * feeRate
+  const revealTxFee = calTxFee(revealTxSize, feeRate)
   const revealTxAmount = revealTxFee + postage
 
   const { data: btcUtxos } = await retry(

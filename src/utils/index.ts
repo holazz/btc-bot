@@ -8,6 +8,10 @@ import { getAddressType, isValidAddress } from '@unisat/wallet-sdk/lib/address'
 import { NETWORK_NAME, NETWORK_TYPE } from '../constants'
 import type { Config } from '../types'
 
+export function calTxFee(txSize: number, feeRate: number) {
+  return Math.ceil(txSize * feeRate)
+}
+
 export function getPostage(address: string) {
   const addressType = getAddressType(address, NetworkType.MAINNET)
   return [
