@@ -16,6 +16,7 @@ import {
 import logger from '../utils/logger'
 import { resolveConfig, retry, writeFile } from '../utils'
 import { getFeeRate, openApi } from '../api'
+import { TOKEN_SYMBOL } from '../constants'
 
 async function resolveFiles() {
   const filesDir = 'data/files'
@@ -121,7 +122,7 @@ Receive Address: ${c.bold(c.dim(destination))}
 
 Commit Tx: ${c.bold(c.dim(c.green(commitTx.id)))}
 Fee Rate: ${c.bold(c.yellow(feeRate))}
-Fee: ${c.bold(c.green(`${totalFee} sats`))} ${c.dim(`(Inscribe Fee: ${c.green(`${inscribeFee} sats`)}, Network Fee: ${c.green(`${networkFee} sats`)}) →`)} ${c.bold(c.green(`${totalFee / 1e8} FB`))}
+Fee: ${c.bold(c.green(`${totalFee} sats`))} ${c.dim(`(Inscribe Fee: ${c.green(`${inscribeFee} sats`)}, Network Fee: ${c.green(`${networkFee} sats`)}) →`)} ${c.bold(c.green(`${totalFee / 1e8} ${TOKEN_SYMBOL}`))}
 `)
 
   const { confirm } = await prompts({

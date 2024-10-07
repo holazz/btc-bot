@@ -22,9 +22,10 @@ export const rpcApi = new RpcApi({
 })
 
 export async function getFeeRate(initialFeeRate?: number) {
+  if (initialFeeRate) return initialFeeRate
   const feeRate = await mempoolApi.getRecommendFee()
   console.table(feeRate)
-  return initialFeeRate ?? feeRate.fastestFee
+  return feeRate.fastestFee
 }
 
 export async function pushTx(data: { txHex: string }) {

@@ -14,6 +14,7 @@ const getNetworkConstants = (network: (typeof NETWORK_NAMES)[number]) => {
       return {
         NETWORK_NAME: 'btc-mainnet',
         NETWORK_TYPE: NetworkType.MAINNET,
+        TOKEN_SYMBOL: 'BTC',
         UNISAT_API_URL: 'https://open-api.unisat.io',
         MEMPOOL_API_URL: 'https://mempool.space/api',
       }
@@ -21,6 +22,7 @@ const getNetworkConstants = (network: (typeof NETWORK_NAMES)[number]) => {
       return {
         NETWORK_NAME: 'btc-testnet',
         NETWORK_TYPE: NetworkType.TESTNET,
+        TOKEN_SYMBOL: 'tBTC',
         UNISAT_API_URL: 'https://open-api-testnet.unisat.io',
         MEMPOOL_API_URL: 'https://mempool.space/testnet',
       }
@@ -28,6 +30,7 @@ const getNetworkConstants = (network: (typeof NETWORK_NAMES)[number]) => {
       return {
         NETWORK_NAME: 'fractal-mainnet',
         NETWORK_TYPE: NetworkType.MAINNET,
+        TOKEN_SYMBOL: 'FB',
         UNISAT_API_URL: 'https://open-api-fractal.unisat.io',
         MEMPOOL_API_URL: 'https://mempool.fractalbitcoin.io/api',
       }
@@ -35,6 +38,7 @@ const getNetworkConstants = (network: (typeof NETWORK_NAMES)[number]) => {
       return {
         NETWORK_NAME: 'fractal-testnet',
         NETWORK_TYPE: NetworkType.MAINNET,
+        TOKEN_SYMBOL: 'tFB',
         UNISAT_API_URL: 'https://open-api-fractal-testnet.unisat.io',
         MEMPOOL_API_URL: 'https://mempool-testnet.fractalbitcoin.io/api',
       }
@@ -43,5 +47,10 @@ const getNetworkConstants = (network: (typeof NETWORK_NAMES)[number]) => {
   }
 }
 
-export const { NETWORK_NAME, NETWORK_TYPE, UNISAT_API_URL, MEMPOOL_API_URL } =
-  getNetworkConstants(process.env.NETWORK as (typeof NETWORK_NAMES)[number])
+export const {
+  NETWORK_NAME,
+  NETWORK_TYPE,
+  TOKEN_SYMBOL,
+  UNISAT_API_URL,
+  MEMPOOL_API_URL,
+} = getNetworkConstants(process.env.NETWORK as (typeof NETWORK_NAMES)[number])
