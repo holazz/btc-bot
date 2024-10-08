@@ -227,7 +227,7 @@ export async function pushTxs(commitTx: string, mintTxs: string[]) {
 
   if (code !== 0 && !msg.includes('Transaction already in block chain'))
     process.exit(0)
-  logger.success(`Tx ${commitTxId} has been submitted`)
+  if (code === 0) logger.success(`Tx ${commitTxId} has been submitted`)
 
   const mintTxIds = []
   for (let i = 0; i < mintTxs.length; i++) {
@@ -243,5 +243,7 @@ export async function pushTxs(commitTx: string, mintTxs: string[]) {
       logger.success(`Tx ${mintTxId} has been submitted`)
     }
   }
-  logger.success(`Total submitted ${mintTxIds.length + 1} txs`)
+  logger.success(
+    `Total submitted ${code === 0 ? mintTxIds.length + 1 : mintTxIds.length} txs`,
+  )
 }

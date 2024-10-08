@@ -7,6 +7,7 @@
     "text": "tsx src/commands/text.ts",
     "file": "tsx src/commands/file.ts",
     "rune": "tsx src/commands/rune.ts",
+    "broadcast": "tsx src/commands/broadcast.ts",
     "rpc": "tsx src/commands/rpc.ts",
     "lint": "eslint .",
     "postinstall": "tsx scripts/postinstall.ts"
