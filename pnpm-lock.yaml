@@ -32,6 +32,9 @@ importers:
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
+      runelib:
+        specifier: ^1.0.7
+        version: 1.0.7
     devDependencies:
       '@holazz/eslint-config':
         specifier: ^1.4.8
@@ -1766,6 +1769,9 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  runelib@1.0.7:
+    resolution: {integrity: sha512-XoOw84DbKXV5UrrLnZ47I8ZdLCtqU958v5eheqzPK8/I/xnxSAtpnHdcolubF87+fiPydcC4dJRprC6L8WTlEg==}
 
   safe-array-concat@1.1.2:
     resolution: {integrity: sha512-vj6RsCsWBCf19jIeHEfkRMw8DPiBb+DMXklQ/1SGDHOMlHdPUkZXFQ2YdplS23zESTijAcurb1aSgJA3AgMu1Q==}
@@ -4183,6 +4189,10 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  runelib@1.0.7:
+    dependencies:
+      bitcoinjs-lib: 6.1.6
 
   safe-array-concat@1.1.2:
     dependencies:

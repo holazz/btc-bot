@@ -15,7 +15,10 @@ export interface Config {
     content: string
     repeat: number
   }
-  rune?: string
+  rune?: {
+    id: string
+    repeat: number
+  }
 }
 
 export interface Inscription {

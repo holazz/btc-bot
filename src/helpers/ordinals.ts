@@ -58,16 +58,7 @@ export function createInscriptionTapScript(
   return { scriptTaproot, tapLeafScript }
 }
 
-export function buildTx(signedPsbt: bitcoin.Psbt) {
-  const tx = signedPsbt.extractTransaction()
-  return {
-    id: tx.getId(),
-    hex: tx.toHex(),
-    size: tx.virtualSize(),
-  }
-}
-
-export async function createCommitPsbt({
+export async function createCommitTx({
   wallet,
   utxos,
   outputs,
@@ -103,10 +94,16 @@ export async function createCommitPsbt({
     toSignInputs,
   })
 
-  return psbt
+  const tx = psbt.extractTransaction()
+
+  return {
+    id: tx.getId(),
+    hex: tx.toHex(),
+    size: tx.virtualSize(),
+  }
 }
 
-export async function createRevealPsbt({
+export async function createRevealTx({
   wallet,
   commitTxId,
   index,
@@ -126,6 +123,7 @@ export async function createRevealPsbt({
   tapLeafScript: ReturnType<typeof createInscriptionTapScript>['tapLeafScript']
 }) {
   const psbt = new bitcoin.Psbt({ network: wallet.network })
+
   psbt.addInput({
     hash: commitTxId,
     index,
@@ -133,10 +131,12 @@ export async function createRevealPsbt({
     witnessUtxo: { value: inputValue, script: scriptTaproot.output! },
     tapLeafScript,
   })
+
   psbt.addOutput({
     address: destination,
     value: postage,
   })
+
   await wallet.signPsbt(psbt, {
     autoFinalized: true,
     toSignInputs: [
@@ -147,7 +147,14 @@ export async function createRevealPsbt({
       },
     ],
   })
-  return psbt
+
+  const tx = psbt.extractTransaction()
+
+  return {
+    id: tx.getId(),
+    hex: tx.toHex(),
+    size: tx.virtualSize(),
+  }
 }
 
 export async function estimateRevealTxSize({
@@ -206,11 +213,7 @@ export async function waitForConfirmation(txId: string, interval = 5000) {
   logger.success(`${txId} has been confirmed\n`)
 }
 
-export async function pushTxs(
-  commitTx: string,
-  revealTxs: string[],
-  useRpc = false,
-) {
+export async function pushTxs(commitTx: string, revealTxs: string[]) {
   const {
     code,
     msg,
@@ -225,27 +228,24 @@ export async function pushTxs(
   if (code !== 0 && !msg.includes('Transaction already in block chain'))
     process.exit(0)
 
+  const limit = pLimit(10)
   const firstBatchRevealTxs = revealTxs.slice(0, 25)
   const secondBatchRevealTxs = revealTxs.slice(25)
 
   const batchPushTxs = async (txs: string[]) => {
-    const processTransaction = async (txHex: string) => {
-      const {
-        code,
-        msg,
-        data: txId,
-      } = await retry(pushTx, Number.MAX_SAFE_INTEGER)({ txHex })
-      if (msg.includes('too-long-mempool-chain')) {
-        secondBatchRevealTxs.unshift(txHex)
-      }
-      if (code === 0) logger.success(`Tx ${txId} has been submitted`)
-      return code === 0 ? txId : null
-    }
-
-    const promises = txs.map(
-      useRpc
-        ? processTransaction
-        : (txHex) => pLimit(10)(() => processTransaction(txHex)),
+    const promises = txs.map((txHex) =>
+      limit(async () => {
+        const {
+          code,
+          msg,
+          data: txId,
+        } = await retry(pushTx, Number.MAX_SAFE_INTEGER)({ txHex })
+        if (msg.includes('too-long-mempool-chain')) {
+          secondBatchRevealTxs.unshift(txHex)
+        }
+        if (code === 0) logger.success(`Tx ${txId} has been submitted`)
+        return code === 0 ? txId : null
+      }),
     )
 
     const txIds = (await Promise.all(promises)).filter(Boolean)

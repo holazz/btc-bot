@@ -19,7 +19,8 @@
     "mime": "^4.0.4",
     "p-limit": "^4.0.0",
     "picocolors": "^1.0.0",
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "runelib": "^1.0.7"
   },
   "devDependencies": {
     "@holazz/eslint-config": "^1.4.8",

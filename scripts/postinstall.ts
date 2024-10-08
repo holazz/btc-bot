@@ -29,7 +29,10 @@ const config: Config = {
     content: '',
     repeat: 1,
   },
-  rune: '',
+  rune: {
+    id: '',
+    repeat: 1,
+  },
 }
 
 export default config

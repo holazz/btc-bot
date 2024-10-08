@@ -3,13 +3,12 @@ import c from 'picocolors'
 import prompts from 'prompts'
 import dayjs from 'dayjs'
 import {
-  buildTx,
-  createCommitPsbt,
+  createCommitTx,
   createInscriptionTapScript,
-  createRevealPsbt,
+  createRevealTx,
   estimateRevealTxSize,
   pushTxs,
-} from '../helpers/inscriber'
+} from '../helpers/ordinals'
 import logger from '../utils/logger'
 import { calTxFee, resolveConfig, retry, writeFile } from '../utils'
 import { getFeeRate, openApi } from '../api'
@@ -47,7 +46,7 @@ async function run() {
     Number.MAX_SAFE_INTEGER,
   )(wallet.address, { cursor: 0, size: 100 })
 
-  const commitPsbt = await createCommitPsbt({
+  const commitTx = await createCommitTx({
     wallet,
     utxos: btcUtxos.utxo,
     outputs: Array(repeat).fill({
@@ -60,11 +59,9 @@ async function run() {
     process.exit(0)
   })
 
-  const commitTx = buildTx(commitPsbt)
-
   const revealTxs = await Promise.all(
-    Array.from({ length: repeat }, async (_, i) => {
-      const psbt = await createRevealPsbt({
+    Array.from({ length: repeat }, async (_, i) =>
+      createRevealTx({
         wallet,
         commitTxId: commitTx.id,
         index: i,
@@ -73,13 +70,12 @@ async function run() {
         postage,
         scriptTaproot,
         tapLeafScript,
-      })
-      return buildTx(psbt)
-    }),
+      }),
+    ),
   )
 
   const inscribeFee = revealTxAmount * repeat
-  const networkFee = commitTx.size * feeRate
+  const networkFee = calTxFee(commitTx.size, feeRate)
   const totalFee = inscribeFee + networkFee
 
   console.log(`

@@ -56,7 +56,10 @@ const config: Config = {
   /**
    * Rune (optional)
    */
-  rune: '',
+  rune: {
+    id: '',
+    repeat: 1,
+  },
 }
 
 export default config
