@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import c from 'picocolors'
 import prompts from 'prompts'
 import dayjs from 'dayjs'

@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import fsp from 'node:fs/promises'
 import { join } from 'node:path'
 import c from 'picocolors'
