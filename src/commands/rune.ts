@@ -62,7 +62,7 @@ async function run() {
   const commitTx = await createCommitTx({
     wallet,
     runestone: mintstone,
-    utxos: btcUtxos.utxo,
+    utxos: btcUtxos.utxo.filter((v) => v.satoshi > 546),
     outputs: [
       {
         address: repeat > 1 ? mintWallet.address : destination,

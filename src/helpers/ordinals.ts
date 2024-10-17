@@ -2,9 +2,10 @@ import pLimit from 'p-limit'
 import { toXOnly } from '@unisat/wallet-sdk/lib/utils'
 import { sendBTC } from '@unisat/wallet-sdk/lib/tx-helpers'
 import { bitcoin } from '@unisat/wallet-sdk/lib/bitcoin-core'
-import { mempoolApi, pushTx } from '../api'
-import { retry, sleep } from '../utils'
+import { pushTx } from '../api'
+import { retry } from '../utils'
 import logger from '../utils/logger'
+import { waitForConfirmation } from '.'
 import type { LocalWallet } from '@unisat/wallet-sdk/lib/wallet'
 import type { UTXO } from '../api'
 import type { Inscription } from '../types'
@@ -192,25 +193,6 @@ export async function estimateRevealTxSize({
   })
   const txSize = psbt.extractTransaction().virtualSize()
   return txSize
-}
-
-export async function waitForConfirmation(txId: string, interval = 5000) {
-  if (!txId) return
-
-  while (true) {
-    try {
-      await mempoolApi.getTxStatus(txId)
-    } catch {
-      logger.error(`Waiting for ${txId} to appear in the mempool...`)
-      await sleep(interval)
-      continue
-    }
-    const { confirmed } = await mempoolApi.getTxStatus(txId)
-    if (confirmed) break
-    logger.warn(`Waiting for ${txId} to be confirmed...`)
-    await sleep(interval)
-  }
-  logger.success(`${txId} has been confirmed\n`)
 }
 
 export async function pushTxs(commitTx: string, revealTxs: string[]) {

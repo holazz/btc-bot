@@ -3,6 +3,7 @@ import { UTXO_DUST } from '@unisat/wallet-sdk'
 import { pushTx } from '../api'
 import { retry } from '../utils'
 import logger from '../utils/logger'
+import { waitForConfirmation } from '.'
 import type { UTXO } from '../api'
 import type { LocalWallet } from '@unisat/wallet-sdk/lib/wallet'
 import type { Runestone } from 'runelib'
@@ -214,36 +215,39 @@ export async function createMintTxs({
 }
 
 export async function pushTxs(commitTx: string, mintTxs: string[]) {
-  const {
-    code,
-    msg,
-    data: commitTxId,
-  } = await retry(
-    pushTx,
-    Number.MAX_SAFE_INTEGER,
-  )({
-    txHex: commitTx,
-  })
+  const txs = [commitTx, ...mintTxs]
+  const txIds = []
 
-  if (code !== 0 && !msg.includes('Transaction already in block chain'))
-    process.exit(0)
-  if (code === 0) logger.success(`Tx ${commitTxId} has been submitted`)
-
-  const mintTxIds = []
-  for (let i = 0; i < mintTxs.length; i++) {
-    const { code, data: mintTxId } = await retry(
+  for (let i = 0; i < txs.length; i++) {
+    const {
+      code,
+      msg,
+      data: txId,
+    } = await retry(
       pushTx,
       Number.MAX_SAFE_INTEGER,
     )({
-      txHex: mintTxs[i],
+      txHex: txs[i],
     })
 
-    if (code === 0) {
-      mintTxIds.push(mintTxId)
-      logger.success(`Tx ${mintTxId} has been submitted`)
+    if (code !== 0) {
+      if (
+        msg.includes('Transaction already in block chain') ||
+        msg.includes('bad-txns-inputs-missingorspent')
+      ) {
+        /* empty */
+      } else if (msg.includes('too-long-mempool-chain')) {
+        const waitForTxId =
+          msg.match(/\b([a-fA-F0-9]{64})\b/)?.[1] || txIds[txIds.length - 1]
+        await waitForConfirmation(waitForTxId)
+        i--
+      } else {
+        process.exit(0)
+      }
+    } else {
+      txIds.push(txId)
+      logger.success(`Tx ${txId} has been submitted`)
     }
   }
-  logger.success(
-    `Total submitted ${code === 0 ? mintTxIds.length + 1 : mintTxIds.length} txs`,
-  )
+  logger.success(`Total submitted ${txIds.length} txs`)
 }

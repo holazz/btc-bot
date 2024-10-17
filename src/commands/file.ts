@@ -74,7 +74,7 @@ async function run() {
 
   const commitTx = await createCommitTx({
     wallet,
-    utxos: btcUtxos.utxo,
+    utxos: btcUtxos.utxo.filter((v) => v.satoshi > 546),
     outputs: revealTxScripts.map(({ scriptTaproot, revealTxAmount }) => ({
       address: scriptTaproot.address,
       satoshis: revealTxAmount,
