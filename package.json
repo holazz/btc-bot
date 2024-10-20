@@ -1,9 +1,9 @@
 {
-  "name": "inscribe-bot",
+  "name": "btc-bot",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "tsx src/commands/text.ts",
+    "dev": "tsx src/index.ts",
     "text": "tsx src/commands/text.ts",
     "file": "tsx src/commands/file.ts",
     "rune": "tsx src/commands/rune.ts",

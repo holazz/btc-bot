@@ -114,6 +114,7 @@ Fee: ${c.bold(c.green(`${totalFee} sats`))} ${c.dim(`(Mint Fee: ${c.green(`${min
     rune: id,
     count: repeat,
     payment: wallet.address,
+    utxos: commitTx.utxos,
     destination,
     mintWallet: {
       address: mintWallet.address,

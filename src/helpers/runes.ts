@@ -75,6 +75,17 @@ export async function createCommitTx({
   const toSignInputs = await tx.addSufficientUtxosForFee(btcUtxos)
   const psbt = tx.toPsbt()
 
+  console.log(
+    // @ts-expect-error need to expose utxos
+    tx.utxos.map((v) => ({
+      txid: v.txid,
+      vout: v.vout,
+      satoshi: v.satoshis,
+      scriptPk: v.scriptPk,
+      inscriptions: v.inscriptions,
+    })),
+  )
+
   await wallet.signPsbt(psbt, {
     autoFinalized: true,
     toSignInputs,
@@ -85,6 +96,14 @@ export async function createCommitTx({
     id: commitTx.getId(),
     hex: commitTx.toHex(),
     size: commitTx.virtualSize(),
+    // @ts-expect-error need to expose utxos
+    utxos: tx.utxos.map((v) => ({
+      txid: v.txid,
+      vout: v.vout,
+      satoshi: v.satoshis,
+      scriptPk: v.scriptPk,
+      inscriptions: v.inscriptions,
+    })),
   }
 }
 
