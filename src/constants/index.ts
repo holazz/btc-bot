@@ -53,4 +53,6 @@ export const {
   TOKEN_SYMBOL,
   UNISAT_API_URL,
   MEMPOOL_API_URL,
-} = getNetworkConstants(process.env.NETWORK as (typeof NETWORK_NAMES)[number])
+} = getNetworkConstants(
+  (process.env.NETWORK || 'btc-testnet') as (typeof NETWORK_NAMES)[number],
+)
