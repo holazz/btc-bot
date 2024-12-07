@@ -93,5 +93,3 @@ export function retry<T>(
       attempt()
     })
 }
-
-resolveConfig()

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@unisat/wallet-sdk':
-        specifier: ^1.7.3
-        version: 1.7.3
+        specifier: ^1.8.0
+        version: 1.8.0
       axios:
         specifier: ^1.5.1
         version: 1.7.7
@@ -457,8 +457,8 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  '@unisat/wallet-sdk@1.7.3':
-    resolution: {integrity: sha512-gB8SQ2T4hl8dN0nJYxMcROkBH7pt2B6AgYTePpMKrBuVPJtn5Y6/rcBcBmle0dU+5ti9nzOhawp3myztdKoYCA==}
+  '@unisat/wallet-sdk@1.8.0':
+    resolution: {integrity: sha512-qt2pR8lXqQln/FFNunFlnm55ucejyr3JGbyJvA3s/Qz13+MSjrH41WtyzzHUWfZbcSbEVHTzVb2MYwLNJYbDOA==}
     engines: {node: '>=14.0.0'}
 
   acorn-jsx@5.3.2:
@@ -585,14 +585,14 @@ packages:
     resolution: {integrity: sha512-Fk8+Vc+e2rMoDU5gXkW9tD+313rhkm5h6N9HfZxXvYU9LedttVvmXKTgd9k5rsQJjkSfsv6XRM8uhJv94SrvcA==}
     engines: {node: '>=8.0.0'}
 
-  bitcore-lib@10.3.0:
-    resolution: {integrity: sha512-q+O4M4adn2iJcBNcVch/KYu81LKEKrUV7VoC0N5qNAzkNIOmuj3kHf90Q2muYx3f+ZP3Mq5Eoqtx1yPcZFDbrg==}
+  bitcore-lib@10.5.3:
+    resolution: {integrity: sha512-QTeKpe5Md8x4njp6PsBCek+kZ0AA21RfBZi8HmTo+16laRxqyHz+pcn2pxDJgq6ZLmVLfU+AykKgHGqPt1KAYg==}
 
   bn.js@4.11.8:
     resolution: {integrity: sha512-ItfYfPLkWHUjckQCk8xC+LwxgK8NYcXywGigJgSwOP8Y2iyWT4f2vsZnoOXTTbo+o5yXmIUJ4gn5538SO5S3gA==}
 
-  bn.js@4.12.0:
-    resolution: {integrity: sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==}
+  bn.js@4.12.1:
+    resolution: {integrity: sha512-k8TVBiPkPJT9uHLdOKfFpqcfprwBFOAAXXozRubr7R7PfIuKvQlzcI4M0pALeqXN09vdaMbUdUj+pass+uULAg==}
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
@@ -673,8 +673,9 @@ packages:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
     engines: {node: '>=8'}
 
-  cipher-base@1.0.4:
-    resolution: {integrity: sha512-Kkht5ye6ZGmwv40uUDZztayT2ThLQGfnj/T71N/XzeZeo3nf8foyW7zGTsPYkEya3m5f3cAypH+qe7YOrM1U2Q==}
+  cipher-base@1.0.6:
+    resolution: {integrity: sha512-3Ek9H3X6pj5TgenXYtNWdaBon1tgYCaebd+XPg0keyjEbEfkD4KkmAxkQ/i1vYvxdcT5nscLBfq9VJRmCBcFSw==}
+    engines: {node: '>= 0.10'}
 
   clean-regexp@1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
@@ -808,8 +809,8 @@ packages:
     resolution: {integrity: sha512-cL/mh3MtJutFOvFc27GPZE2pWL3a3k4YvzUWEOvilnfZVlH3Jwgx/7d6tlD7/75tNk8TG2m+7Kgtz0SI1tWcqw==}
     engines: {node: '>=8.0.0'}
 
-  elliptic@6.5.7:
-    resolution: {integrity: sha512-ESVCtTwiA+XhY3wyh24QqRGBoP3rEdDUl3EDUUo9tft074fi19IrdpH7hLCMMP3CIj7jb3W96rn8lt/BqIlt5Q==}
+  elliptic@6.6.1:
+    resolution: {integrity: sha512-RaddvvMatK2LJHqFJ+YA4WysVN5Ita9E35botqIYspQ4TkRAlCicdzKOjlyv/1Za5RyTNn7di//eEV0uTAfe3g==}
 
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
@@ -1530,11 +1531,11 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  node-addon-api@2.0.2:
-    resolution: {integrity: sha512-Ntyt4AIXyaLIuMHF6IOoTakB3K+RWxwtsHNRxllEoA6vPwP9o4866g6YWDLUdnucilZhmkxiHwHr11gAENw+QA==}
+  node-addon-api@5.1.0:
+    resolution: {integrity: sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==}
 
-  node-gyp-build@4.8.2:
-    resolution: {integrity: sha512-IRUxE4BVsHWXkV/SFOut4qTlagw2aM8T5/vnTsmrHJvVoKueJHRc/JaFND7QDDc61kLYUJ6qlZM3sqTSyx2dTw==}
+  node-gyp-build@4.8.4:
+    resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
     hasBin: true
 
   normalize-package-data@2.5.0:
@@ -1784,9 +1785,9 @@ packages:
     resolution: {integrity: sha512-CdASjNJPvRa7roO6Ra/gLYBTzYzzPyyBXxIMdGW3USQLyjWEls2RgW5UBTXaQVp+OrpeCK3bLem8smtmheoRuw==}
     engines: {node: '>= 0.4'}
 
-  secp256k1@4.0.3:
-    resolution: {integrity: sha512-NLZVf+ROMxwtEj3Xa562qgv2BK5e2WNmXPiOdVIPLgs6lyTzMvBq0aWTYMI5XCP9jZMVKOcqZLw/Wc4vDkuxhA==}
-    engines: {node: '>=10.0.0'}
+  secp256k1@4.0.4:
+    resolution: {integrity: sha512-6JfvwvjUOn8F/jUoBY2Q1v5WY5XS+rj8qSe0v8Y4ezH4InLgTEeOOPQsRll9OV429Pvo6BCHGavIyJfr3TAhsw==}
+    engines: {node: '>=18.0.0'}
 
   semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
@@ -2571,7 +2572,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@unisat/wallet-sdk@1.7.3':
+  '@unisat/wallet-sdk@1.8.0':
     dependencies:
       '@bitcoinerlab/secp256k1': 1.1.1
       '@keystonehq/keystone-sdk': 0.3.0
@@ -2579,7 +2580,7 @@ snapshots:
       bignumber.js: 9.1.2
       bip39: 3.1.0
       bitcoinjs-lib: 6.1.6
-      bitcore-lib: 10.3.0
+      bitcore-lib: 10.5.3
       ecpair: 2.1.0
       hdkey: 2.1.0
       tiny-secp256k1: 2.2.1
@@ -2739,19 +2740,19 @@ snapshots:
       typeforce: 1.18.0
       varuint-bitcoin: 1.1.2
 
-  bitcore-lib@10.3.0:
+  bitcore-lib@10.5.3:
     dependencies:
       bech32: 2.0.0
       bn.js: 4.11.8
       bs58: 4.0.1
       buffer-compare: 1.1.1
-      elliptic: 6.5.7
+      elliptic: 6.6.1
       inherits: 2.0.1
       lodash: 4.17.21
 
   bn.js@4.11.8: {}
 
-  bn.js@4.12.0: {}
+  bn.js@4.12.1: {}
 
   boolbase@1.0.0: {}
 
@@ -2840,7 +2841,7 @@ snapshots:
 
   ci-info@3.9.0: {}
 
-  cipher-base@1.0.4:
+  cipher-base@1.0.6:
     dependencies:
       inherits: 2.0.4
       safe-buffer: 5.2.1
@@ -2875,7 +2876,7 @@ snapshots:
 
   create-hash@1.2.0:
     dependencies:
-      cipher-base: 1.0.4
+      cipher-base: 1.0.6
       inherits: 2.0.4
       md5.js: 1.3.5
       ripemd160: 2.0.2
@@ -2996,9 +2997,9 @@ snapshots:
       typeforce: 1.18.0
       wif: 2.0.6
 
-  elliptic@6.5.7:
+  elliptic@6.6.1:
     dependencies:
-      bn.js: 4.12.0
+      bn.js: 4.12.1
       brorand: 1.1.0
       hash.js: 1.1.7
       hmac-drbg: 1.0.1
@@ -3603,7 +3604,7 @@ snapshots:
       bs58check: 2.1.2
       ripemd160: 2.0.2
       safe-buffer: 5.2.1
-      secp256k1: 4.0.3
+      secp256k1: 4.0.4
 
   hmac-drbg@1.0.1:
     dependencies:
@@ -3926,9 +3927,9 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  node-addon-api@2.0.2: {}
+  node-addon-api@5.1.0: {}
 
-  node-gyp-build@4.8.2: {}
+  node-gyp-build@4.8.4: {}
 
   normalize-package-data@2.5.0:
     dependencies:
@@ -4209,11 +4210,11 @@ snapshots:
       es-errors: 1.3.0
       is-regex: 1.1.4
 
-  secp256k1@4.0.3:
+  secp256k1@4.0.4:
     dependencies:
-      elliptic: 6.5.7
-      node-addon-api: 2.0.2
-      node-gyp-build: 4.8.2
+      elliptic: 6.6.1
+      node-addon-api: 5.1.0
+      node-gyp-build: 4.8.4
 
   semver@5.7.2: {}
 
